@@ -39,13 +39,35 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Y62-Pu-1h9">
+                                <frame key="frameInset" minX="164" minY="318" width="47" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Sign In"/>
+                            </button>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="eWr-cx-Kus">
+                                <frame key="frameInset" minX="16" minY="260" width="143" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Enter" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pcu-R0-ZpZ">
+                                <frame key="frameInset" minX="16" minY="240" width="176" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </view>
                     <connections>
                         <outlet property="descrip" destination="IFV-Kk-cAd" id="H7r-vY-kQw"/>
+                        <outlet property="entername" destination="eWr-cx-Kus" id="Rfx-zu-Nef"/>
+                        <outlet property="enternameD" destination="pcu-R0-ZpZ" id="yI1-w0-kJz"/>
                         <outlet property="label" destination="2Ap-76-sMM" id="Fsg-0b-rRQ"/>
                         <outlet property="name" destination="vZZ-tu-8Bb" id="lcz-BB-AeO"/>
+                        <outlet property="signin" destination="Y62-Pu-1h9" id="N1T-39-tQ6"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -53,4 +75,5 @@
             <point key="canvasLocation" x="658.39999999999998" y="80.50974512743629"/>
         </scene>
     </scenes>
+    <color key="tintColor" red="0.0" green="0.17779476694685759" blue="1" alpha="1" colorSpace="calibratedRGB"/>
 </document>
