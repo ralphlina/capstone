@@ -8,6 +8,8 @@
 
 import UIKit
 
+
+
 class ViewController: UIViewController {
 
     @IBOutlet weak var label: UILabel!
@@ -40,7 +42,7 @@ class ViewController: UIViewController {
     }
     
     func initial() {
-        label.text = "CI HitchHike"
+        label.text = "CI HitchHike*"
         label.font = UIFont (name: "GILLSANSCE-ROMAN", size: 60) //doesnt work. need to import font first
         
         name.text = "-Ralph & Evan"
