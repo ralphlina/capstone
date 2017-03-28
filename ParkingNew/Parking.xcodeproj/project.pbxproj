@@ -17,6 +17,9 @@
 		59A7A43E1E53F4FF000A87B3 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 59A7A43D1E53F4FF000A87B3 /* CoreLocation.framework */; };
 		59A7A4401E53F506000A87B3 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 59A7A43F1E53F506000A87B3 /* MapKit.framework */; };
 		59D765051E1F46CB00A56961 /* View2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59D765041E1F46CB00A56961 /* View2.swift */; };
+		59F6FF851E78D7720065805B /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 59F6FF841E78D7720065805B /* GoogleService-Info.plist */; };
+		59F6FF891E78DB080065805B /* ViewController3.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59F6FF881E78DB080065805B /* ViewController3.swift */; };
+		59F6FF8B1E78EBB00065805B /* View4going.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59F6FF8A1E78EBB00065805B /* View4going.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +56,9 @@
 		59A7A43D1E53F4FF000A87B3 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		59A7A43F1E53F506000A87B3 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		59D765041E1F46CB00A56961 /* View2.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = View2.swift; sourceTree = "<group>"; };
+		59F6FF841E78D7720065805B /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
+		59F6FF881E78DB080065805B /* ViewController3.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController3.swift; sourceTree = "<group>"; };
+		59F6FF8A1E78EBB00065805B /* View4going.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = View4going.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -108,7 +114,10 @@
 			children = (
 				5946D4A91DC096300039C4AD /* AppDelegate.swift */,
 				5946D4AB1DC096300039C4AD /* ViewController.swift */,
+				59F6FF881E78DB080065805B /* ViewController3.swift */,
 				5946D4AD1DC096300039C4AD /* Main.storyboard */,
+				59F6FF8A1E78EBB00065805B /* View4going.swift */,
+				59F6FF841E78D7720065805B /* GoogleService-Info.plist */,
 				59D765041E1F46CB00A56961 /* View2.swift */,
 				5946D4B01DC096300039C4AD /* Assets.xcassets */,
 				5946D4B21DC096300039C4AD /* LaunchScreen.storyboard */,
@@ -252,6 +261,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5946D4B41DC096300039C4AD /* LaunchScreen.storyboard in Resources */,
+				59F6FF851E78D7720065805B /* GoogleService-Info.plist in Resources */,
 				5946D4B11DC096300039C4AD /* Assets.xcassets in Resources */,
 				5946D4AF1DC096300039C4AD /* Main.storyboard in Resources */,
 			);
@@ -280,7 +290,9 @@
 			files = (
 				5946D4AC1DC096300039C4AD /* ViewController.swift in Sources */,
 				59D765051E1F46CB00A56961 /* View2.swift in Sources */,
+				59F6FF891E78DB080065805B /* ViewController3.swift in Sources */,
 				5946D4AA1DC096300039C4AD /* AppDelegate.swift in Sources */,
+				59F6FF8B1E78EBB00065805B /* View4going.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

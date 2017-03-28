@@ -30,6 +30,10 @@ class ViewController: UIViewController {
     @IBOutlet weak var entername: UITextField!
     
     
+    @IBOutlet weak var image: UIImageView!
+    
+    
+    
     @IBAction func hello(sender: AnyObject) {
         //helloname.text = "Hello \(entername.text!)!"
         //helloname.text = entername.text
@@ -47,7 +51,6 @@ class ViewController: UIViewController {
         
         name.text = "-Ralph & Evan"
         descrip.text = "Here is our parking app"
-   
     }
     
     
