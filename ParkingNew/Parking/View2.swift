@@ -15,22 +15,36 @@ class View2 : UIViewController, CLLocationManagerDelegate {
     
     @IBOutlet weak var address: UILabel!
     
+    //map
     @IBOutlet weak var mapView: MKMapView!
+    //var labelText = String()
+    var manager = CLLocationManager()
+    //var previousAddress: String!
+    //var selectedLocation: LocationModel?
     
-    var locationManager: CLLocationManager!
-    var previousAddress: String!
+    func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        let location = locations[0]
+        
+        let span:MKCoordinateSpan = MKCoordinateSpanMake(0.01, 0.01)
+        let myLocation:CLLocationCoordinate2D = CLLocationCoordinate2DMake(location.coordinate.latitude, location.coordinate.longitude)
+        let region:MKCoordinateRegion = MKCoordinateRegionMake(myLocation, span)
+        mapView.setRegion(region, animated: true)
+        
+        self.mapView.showsUserLocation = true
+       
+        
+    }
+    
+
+    @IBOutlet weak var helloname: UILabel!
+    
+    
     
     
     func backColor() {
         //self.view.backgroundColor = UIColor.grayColor()
         self.view.backgroundColor = UIColor(red: (255/255)*2, green: (247/255)*2, blue: (227/255)*2, alpha: 0.5)
     }
-    
-    @IBOutlet weak var helloname: UILabel!
-    
-
-    
-    var labelText = String()
     
     
     override func viewDidLoad() {
@@ -43,21 +57,22 @@ class View2 : UIViewController, CLLocationManagerDelegate {
         locationManager.requestLocation()
         */
         
-        backColor()
-        helloname.text = labelText
 
-    }
-    /*
-    func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        super.viewDidLoad()
         
-        let location: CLLocation = locations.first!
-        self.mapView.centerCoordinate = location.coordinate
-        let reg = MKCoordinateRegionMakeWithDistance(location.coordinate, 1500, 1500)
-        self.mapView.setRegion(reg, animated: true)
-        //geoCode(location)
-        // 3:53 FROM THE TUTORIAL, stopped there
+        manager.delegate = self
+        manager.desiredAccuracy = kCLLocationAccuracyBest
+        manager.requestWhenInUseAuthorization()
+        manager.startUpdatingLocation()
         
+        backColor()
+        //helloname.text = labelText
+        address.text = "CSU Channel Islands"
     }
-    */
+    
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+    }
+
     
 }

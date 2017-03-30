@@ -14,6 +14,7 @@
 		5946D4B41DC096300039C4AD /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5946D4B21DC096300039C4AD /* LaunchScreen.storyboard */; };
 		5946D4BF1DC096300039C4AD /* ParkingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5946D4BE1DC096300039C4AD /* ParkingTests.swift */; };
 		5946D4CA1DC096300039C4AD /* ParkingUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5946D4C91DC096300039C4AD /* ParkingUITests.swift */; };
+		5960680C1E8B91C1001E9DC5 /* messageController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5960680B1E8B91C1001E9DC5 /* messageController.swift */; };
 		59A7A43E1E53F4FF000A87B3 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 59A7A43D1E53F4FF000A87B3 /* CoreLocation.framework */; };
 		59A7A4401E53F506000A87B3 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 59A7A43F1E53F506000A87B3 /* MapKit.framework */; };
 		59D765051E1F46CB00A56961 /* View2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59D765041E1F46CB00A56961 /* View2.swift */; };
@@ -53,6 +54,7 @@
 		5946D4C51DC096300039C4AD /* ParkingUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ParkingUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		5946D4C91DC096300039C4AD /* ParkingUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParkingUITests.swift; sourceTree = "<group>"; };
 		5946D4CB1DC096300039C4AD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		5960680B1E8B91C1001E9DC5 /* messageController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = messageController.swift; sourceTree = "<group>"; };
 		59A7A43D1E53F4FF000A87B3 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		59A7A43F1E53F506000A87B3 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		59D765041E1F46CB00A56961 /* View2.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = View2.swift; sourceTree = "<group>"; };
@@ -115,6 +117,7 @@
 				5946D4A91DC096300039C4AD /* AppDelegate.swift */,
 				5946D4AB1DC096300039C4AD /* ViewController.swift */,
 				59F6FF881E78DB080065805B /* ViewController3.swift */,
+				5960680B1E8B91C1001E9DC5 /* messageController.swift */,
 				5946D4AD1DC096300039C4AD /* Main.storyboard */,
 				59F6FF8A1E78EBB00065805B /* View4going.swift */,
 				59F6FF841E78D7720065805B /* GoogleService-Info.plist */,
@@ -291,6 +294,7 @@
 				5946D4AC1DC096300039C4AD /* ViewController.swift in Sources */,
 				59D765051E1F46CB00A56961 /* View2.swift in Sources */,
 				59F6FF891E78DB080065805B /* ViewController3.swift in Sources */,
+				5960680C1E8B91C1001E9DC5 /* messageController.swift in Sources */,
 				5946D4AA1DC096300039C4AD /* AppDelegate.swift in Sources */,
 				59F6FF8B1E78EBB00065805B /* View4going.swift in Sources */,
 			);

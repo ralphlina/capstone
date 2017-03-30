@@ -10,9 +10,11 @@ import UIKit
 
 class ViewController3: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate {
 
+    var labelText = String()
     
     @IBOutlet weak var label1: UILabel!
 
+    @IBOutlet weak var helloname: UILabel!
     @IBOutlet weak var pickerView: UIPickerView!
     
     let locations1 = ["Library", "Student Union", "Gym", "A7", "A8", "A9", "A10", "El Dorado", "Aliso Hall", "Sierra Hall"]
@@ -42,7 +44,7 @@ class ViewController3: UIViewController, UIPickerViewDataSource, UIPickerViewDel
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        helloname.text = labelText
         // Do any additional setup after loading the view.
     }
 

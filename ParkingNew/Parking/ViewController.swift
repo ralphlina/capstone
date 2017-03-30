@@ -83,7 +83,7 @@ class ViewController: UIViewController {
 
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         
-        let DestViewController : View2 = segue.destinationViewController as! View2
+        let DestViewController : ViewController3 = segue.destinationViewController as! ViewController3
         
         DestViewController.labelText = "Hello \(entername.text!)!"
         //DestViewController.labelText = entername.text!
