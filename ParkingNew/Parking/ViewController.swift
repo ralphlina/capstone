@@ -7,7 +7,7 @@
 //
 
 import UIKit
-
+import Firebase
 
 
 class ViewController: UIViewController {
@@ -17,40 +17,79 @@ class ViewController: UIViewController {
     
     @IBOutlet weak var name: UILabel!
     
-    @IBOutlet weak var descrip: UILabel!
-    
-    @IBOutlet weak var enternameD: UILabel!
-    
-    var name2:String = ""
-    
-    @IBOutlet weak var signin: UIButton!
-    
-    
     @IBOutlet weak var enterPW: UITextField!
     @IBOutlet weak var entername: UITextField!
     
-    
     @IBOutlet weak var image: UIImageView!
     
-    
-    
-    @IBAction func hello(sender: AnyObject) {
-        //helloname.text = "Hello \(entername.text!)!"
-        //helloname.text = entername.text
-    }
-    
-    
-    func output() {
-        name2 = "TESTING PRINT IN THE OUTPUT BELOW"
-        print(name2)
-    }
-    
-    func initial() {
-        label.text = "CI HitchHike*"
-        label.font = UIFont (name: "GILLSANSCE-ROMAN", size: 60) //doesnt work. need to import font first
+    func displayMyAlertMessage(userMessage: String)
+    {
+        let myAlert = UIAlertController(title: "Alert", message: userMessage, preferredStyle: UIAlertControllerStyle.alert);
         
-        name.text = "-Ralph & Evan"
-        descrip.text = "Here is our parking app"
+        let okAction = UIAlertAction(title: "Ok", style: UIAlertActionStyle.default, handler: nil);
+        
+        myAlert.addAction(okAction);
+        
+        self.present(myAlert, animated: true, completion: nil);
+    }
+    
+    @IBAction func signinBtnTap(_ sender: Any) {
+        
+        let userEmail = entername.text;
+        let userPassword = enterPW.text;
+        
+        if((userEmail?.isEmpty)! || (userPassword?.isEmpty)!)
+        {
+            //Display alert message.
+            self.displayMyAlertMessage(userMessage: "All fields are required");
+            return;
+        }
+        
+        FIRAuth.auth()?.signIn(withEmail: userEmail!, password: userPassword!, completion: { (user: FIRUser?, error) in
+            if error == nil {
+                //registration successful
+                //self.displayMyAlertMessage(userMessage: "Signed in as " + self.entername.text!);
+                self.performSegue(withIdentifier: "logintoView3", sender: self)
+                self.entername.text = nil;
+                self.enterPW.text = nil;
+            }else{
+                //registration failure
+                self.displayMyAlertMessage(userMessage: "Error in email or password fields");
+            }
+        })
+        
+    }
+
+    @IBAction func registerBtnTap(_ sender: Any) {
+        
+        let userEmail = entername.text;
+        let userPassword = enterPW.text;
+        
+        if((userEmail?.isEmpty)! || (userPassword?.isEmpty)!)
+        {
+            //Display alert message.
+            self.displayMyAlertMessage(userMessage: "All fields are required");
+            return;
+        }
+        
+        FIRAuth.auth()?.createUser(withEmail: userEmail!, password: userPassword!, completion: { (user: FIRUser?, error) in
+            if error == nil {
+                //registration successful
+                self.displayMyAlertMessage(userMessage:"User is registered!");
+            }else{
+                //registration failure
+                self.displayMyAlertMessage(userMessage:"User is not registered in, try again");
+            }
+        })
+    }
+    
+    @IBAction func logoutBtnTap(_ sender: Any) {
+        
+        try! FIRAuth.auth()?.signOut();
+        
+        self.displayMyAlertMessage(userMessage: "Signed out");
+        self.entername.text = nil;
+        self.enterPW.text = nil;
     }
     
     
@@ -63,9 +102,9 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        output()
-        initial()
         backColor()
+        
+        FIRApp.configure()
 
     }
 
@@ -80,14 +119,14 @@ class ViewController: UIViewController {
       //  DestViewController.labelText = "Hello \(entername.text!)!"
    // }
 
-
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+/*
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
-        let DestViewController : ViewController3 = segue.destinationViewController as! ViewController3
+        let DestViewController : ViewController3 = segue.destination as! ViewController3
         
         DestViewController.labelText = "Hello \(entername.text!)!"
         //DestViewController.labelText = entername.text!
     }
-    
+    */
 }
 

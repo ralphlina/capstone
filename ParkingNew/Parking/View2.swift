@@ -22,7 +22,7 @@ class View2 : UIViewController, CLLocationManagerDelegate {
     //var previousAddress: String!
     //var selectedLocation: LocationModel?
     
-    func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         let location = locations[0]
         
         let span:MKCoordinateSpan = MKCoordinateSpanMake(0.01, 0.01)
