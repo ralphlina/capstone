@@ -59,29 +59,6 @@ class ViewController: UIViewController {
         })
         
     }
-
-    @IBAction func registerBtnTap(_ sender: Any) {
-        
-        let userEmail = entername.text;
-        let userPassword = enterPW.text;
-        
-        if((userEmail?.isEmpty)! || (userPassword?.isEmpty)!)
-        {
-            //Display alert message.
-            self.displayMyAlertMessage(userMessage: "All fields are required");
-            return;
-        }
-        
-        FIRAuth.auth()?.createUser(withEmail: userEmail!, password: userPassword!, completion: { (user: FIRUser?, error) in
-            if error == nil {
-                //registration successful
-                self.displayMyAlertMessage(userMessage:"User is registered!");
-            }else{
-                //registration failure
-                self.displayMyAlertMessage(userMessage:"User is not registered in, try again");
-            }
-        })
-    }
     
     @IBAction func logoutBtnTap(_ sender: Any) {
         
