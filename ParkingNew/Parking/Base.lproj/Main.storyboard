@@ -153,6 +153,9 @@
                                     <segment title="Passenger"/>
                                     <segment title="Driver"/>
                                 </segments>
+                                <connections>
+                                    <action selector="indexChanged:" destination="JEL-8G-fEh" eventType="valueChanged" id="etH-jF-nGf"/>
+                                </connections>
                             </segmentedControl>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Enter Email Address:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HPm-3V-6Gg">
                                 <rect key="frame" x="16" y="230" width="161" height="21"/>
@@ -206,6 +209,7 @@
                         <outlet property="userPassword" destination="D0W-W1-07H" id="GIc-Dj-mHi"/>
                         <outlet property="userType" destination="6Ll-Gx-PiU" id="9qx-AK-cnA"/>
                         <outlet property="username" destination="KFE-Zd-l4J" id="YYL-A1-Knb"/>
+                        <segue destination="sgZ-h5-QO2" kind="showDetail" identifier="createAccounttoView3" id="i02-Zq-C79"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dQR-MT-Ax3" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -264,7 +268,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="t0V-5V-aeZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3892" y="-784.85757121439292"/>
+            <point key="canvasLocation" x="5330" y="-100"/>
         </scene>
         <!--View Controller3-->
         <scene sceneID="T8F-od-ej6">
@@ -414,7 +418,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6r0-8v-jGa" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5340" y="386.35682158920542"/>
+            <point key="canvasLocation" x="4380" y="-100"/>
         </scene>
         <!--Message Controller-->
         <scene sceneID="Yo3-8a-nEH">
@@ -438,7 +442,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MGz-Ek-Xqg" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="6500" y="-100.29985007496252"/>
+            <point key="canvasLocation" x="6434" y="-100"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="SLN-Zf-mfj">
@@ -462,5 +466,8 @@
     <resources>
         <image name="fog" width="640" height="960"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="i02-Zq-C79"/>
+    </inferredMetricsTieBreakers>
     <color key="tintColor" red="0.0" green="0.17779476694685759" blue="1" alpha="1" colorSpace="calibratedRGB"/>
 </document>

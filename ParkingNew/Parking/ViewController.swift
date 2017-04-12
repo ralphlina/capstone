@@ -46,15 +46,15 @@ class ViewController: UIViewController {
         }
         
         FIRAuth.auth()?.signIn(withEmail: userEmail!, password: userPassword!, completion: { (user: FIRUser?, error) in
-            if error == nil {
+            if error != nil {
+                //registration failure
+                self.displayMyAlertMessage(userMessage: "Error in email or password fields");
+            }else{
                 //registration successful
                 //self.displayMyAlertMessage(userMessage: "Signed in as " + self.entername.text!);
                 self.performSegue(withIdentifier: "logintoView3", sender: self)
                 self.entername.text = nil;
                 self.enterPW.text = nil;
-            }else{
-                //registration failure
-                self.displayMyAlertMessage(userMessage: "Error in email or password fields");
             }
         })
         

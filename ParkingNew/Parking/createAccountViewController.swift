@@ -8,6 +8,7 @@
 
 import UIKit
 import Firebase
+import FirebaseDatabase
 
 class createAccountViewController: UIViewController {
     
@@ -23,9 +24,32 @@ class createAccountViewController: UIViewController {
     @IBOutlet weak var username: UITextField!
     
     @IBOutlet weak var userType: UISegmentedControl!
-    
+    var userTypeVar = "Passenger"
     @IBOutlet weak var userEmail: UITextField!
     @IBOutlet weak var userPassword: UITextField!
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        
+        //FIRApp.configure()
+        ref = FIRDatabase.database().reference()
+        
+        //configureDatabase()
+        // Do any additional setup after loading the view.
+    }
+    
+    /*
+     func configureDatabase() {
+     //Gets a FIRDatabaseReference for the root of your Firebase Database.
+     //ref = FIRDatabase.database().reference()
+     }
+     */
+    
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
+    }
     
     func displayMyAlertMessage(userMessage: String)
     {
@@ -38,6 +62,20 @@ class createAccountViewController: UIViewController {
         self.present(myAlert, animated: true, completion: nil);
     }
     
+    
+    @IBAction func indexChanged(_ sender: Any) {
+        
+        switch userType.selectedSegmentIndex
+        {
+        case 0:
+            userTypeVar = "Passenger";
+        case 1:
+            userTypeVar = "Driver";
+        default:
+            //self.userTypeVar = "Passenger";
+            break; 
+        }
+    }
     
     @IBAction func createUser(_ sender: Any) {
         
@@ -55,40 +93,29 @@ class createAccountViewController: UIViewController {
     }
     
     FIRAuth.auth()?.createUser(withEmail: email!, password: password!, completion: { (user: FIRUser?, error) in
-    if error == nil {
-    //registration successful
-    self.displayMyAlertMessage(userMessage:"User is now registered!\nYou can now log in.");
+    if error != nil {
+        //registration failure
+        self.displayMyAlertMessage(userMessage:"User is not registered in, try again");
     }else{
-    //registration failure
-    self.displayMyAlertMessage(userMessage:"User is not registered in, try again");
+        //registration successful
+        self.ref.child("Users").childByAutoId().setValue(["username": username, "Email": email, "Type": self.userTypeVar, "Password": password]);
+        
+        let createAcctAlert = UIAlertController(title: "New User:", message: "New User Created!", preferredStyle: UIAlertControllerStyle.alert);
+        
+        //alert.addAction(UIAlertAction(title:"OK", style: .Default, handler:  { action in self.performSegueWithIdentifier("mySegueIdentifier", sender: self) }
+        createAcctAlert.addAction(UIAlertAction(title:"OK", style: UIAlertActionStyle.default, handler: {action in self.performSegue(withIdentifier: "createAccounttoView3", sender: self)}));
+        
+        self.present(createAcctAlert, animated: true, completion: nil)
+        //self.performSegue(withIdentifier: "createAccounttoView3", sender: self);
+        
+        //self.displayMyAlertMessage(userMessage:"New User is now registered!\nYou can now log in.");
     }
     })
    //*/
         
     }
     
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        
-        FIRApp.configure()
-        
-        configureDatabase()
-        // Do any additional setup after loading the view.
-    }
-
-    func configureDatabase() {
-        //Gets a FIRDatabaseReference for the root of your Firebase Database.
-        ref = FIRDatabase.database().reference()
-    }
     
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
-
     /*
     // MARK: - Navigation
 
