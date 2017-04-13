@@ -22,6 +22,11 @@ class View2 : UIViewController, CLLocationManagerDelegate {
     //var previousAddress: String!
     //var selectedLocation: LocationModel?
     
+    @IBAction func backBtnTap(_ sender: Any) {
+        self.dismiss(animated: true, completion: nil)
+    }
+    
+    
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         let location = locations[0]
         

@@ -16,6 +16,11 @@ class View4going: UIViewController {
     @IBOutlet weak var label1: UILabel!
     @IBOutlet weak var startLabel: UILabel!
     
+    @IBAction func backBtnTap(_ sender: Any) {
+        self.dismiss(animated: true, completion: nil)
+    }
+    
+    
     let locations1 = ["Library", "Student Union", "Gym", "A7", "A8", "A9", "A10", "El Dorado", "Aliso Hall", "Sierra Hall"]
     
     

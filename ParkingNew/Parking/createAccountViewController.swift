@@ -20,6 +20,9 @@ class createAccountViewController: UIViewController {
     
     
     //ref = FIRDatabase.database().reference()
+    @IBAction func backBtnTap(_ sender: Any) {
+        self.dismiss(animated: true, completion: nil)
+    }
     
     @IBOutlet weak var username: UITextField!
     
