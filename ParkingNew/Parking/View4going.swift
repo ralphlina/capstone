@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Firebase
 
 class View4going: UIViewController {
 
@@ -20,6 +21,31 @@ class View4going: UIViewController {
         self.dismiss(animated: true, completion: nil)
     }
     
+    @IBAction func signOutBtnTap(_ sender: Any) {
+        try! FIRAuth.auth()!.signOut()
+        
+//        FIRAuth.auth()?.addStateDidChangeListener { auth, user in
+//            if user == nil {
+//                // user is signed in so don't do anything
+//            } else {
+//                //the user has now signed out so go to login view controller
+//                // and remove this listener
+//                
+//                //self.displayMyAlertMessage(userMessage: "Signed out");
+//                
+//                UserDefaults.standard.setValue(nil, forKey: "uid")
+//                
+//                let viewController:UIViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "Login") as UIViewController
+//                // .instantiatViewControllerWithIdentifier() returns AnyObject! this must be downcast to utilize it
+//                
+//                self.present(viewController, animated: false, completion: nil)
+//                
+//            }
+//        }
+        
+        let viewController:UIViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "Login")
+        self.present(viewController, animated: false, completion: nil)
+    }
     
     let locations1 = ["Library", "Student Union", "Gym", "A7", "A8", "A9", "A10", "El Dorado", "Aliso Hall", "Sierra Hall"]
     
@@ -48,7 +74,8 @@ class View4going: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        startLabel.text = segLabel
+        //FIRApp.configure()
+        //startLabel.text = segLabel
         // Do any additional setup after loading the view.
     }
 

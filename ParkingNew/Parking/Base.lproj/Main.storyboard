@@ -12,7 +12,7 @@
         <!--CI HitchHike-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="Parking" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="Login" useStoryboardIdentifierAsRestorationIdentifier="YES" id="BYZ-38-t0r" customClass="ViewController" customModule="Parking" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -25,21 +25,6 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
-                            <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="c01-Gp-rpR">
-                                <rect key="frame" x="10" y="10" width="121" height="29"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <segments>
-                                    <segment title="First"/>
-                                    <segment title="Second"/>
-                                </segments>
-                            </segmentedControl>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2Ap-76-sMM">
-                                <rect key="frame" x="145" y="41" width="203" height="25"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="waU-KR-3uD" userLabel="signinBtnTap">
                                 <rect key="frame" x="145" y="262" width="85" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -97,14 +82,22 @@
                                     <segue destination="JEL-8G-fEh" kind="showDetail" identifier="registertoCreateView" id="meV-hb-kgM"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Welcome to CI HitchHike" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iYK-rn-g62">
+                                <rect key="frame" x="81" y="64" width="192" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </view>
-                    <navigationItem key="navigationItem" title="CI HitchHike" id="UMH-9H-WbX"/>
+                    <navigationItem key="navigationItem" title="CI HitchHike" id="UMH-9H-WbX">
+                        <barButtonItem key="backBarButtonItem" title="Back" id="wZE-WS-xlD"/>
+                    </navigationItem>
                     <connections>
                         <outlet property="enterPW" destination="Ouh-Mw-QQn" id="Thg-42-yOZ"/>
                         <outlet property="entername" destination="eWr-cx-Kus" id="ICc-s0-Xm8"/>
-                        <outlet property="label" destination="2Ap-76-sMM" id="Fsg-0b-rRQ"/>
                         <outlet property="name" destination="vZZ-tu-8Bb" id="lcz-BB-AeO"/>
                         <segue destination="sgZ-h5-QO2" kind="showDetail" identifier="logintoView3" id="C7H-ZP-lFE"/>
                     </connections>
@@ -376,7 +369,8 @@
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                 <items>
                                     <navigationItem title="Current Location" id="vYY-4R-1IR">
-                                        <barButtonItem key="leftBarButtonItem" title="Back" id="oYn-Wo-nWb">
+                                        <barButtonItem key="backBarButtonItem" title="Back" id="d5x-gp-HMz"/>
+                                        <barButtonItem key="leftBarButtonItem" title="Sign Out" id="oYn-Wo-nWb">
                                             <connections>
                                                 <action selector="backBtnTap:" destination="sgZ-h5-QO2" id="RKL-Qc-ket"/>
                                             </connections>
@@ -472,6 +466,11 @@
                                                 <action selector="backBtnTap:" destination="wcv-K3-ZqT" id="AnO-jD-Lhf"/>
                                             </connections>
                                         </barButtonItem>
+                                        <barButtonItem key="rightBarButtonItem" title="Sign Out" id="CDp-4V-rd9">
+                                            <connections>
+                                                <action selector="signOutBtnTap:" destination="wcv-K3-ZqT" id="qh0-qR-z4y"/>
+                                            </connections>
+                                        </barButtonItem>
                                     </navigationItem>
                                 </items>
                             </navigationBar>
@@ -513,7 +512,7 @@
         <image name="fog" width="640" height="960"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="i02-Zq-C79"/>
+        <segue reference="C7H-ZP-lFE"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" red="0.0" green="0.17779476694685759" blue="1" alpha="1" colorSpace="calibratedRGB"/>
 </document>

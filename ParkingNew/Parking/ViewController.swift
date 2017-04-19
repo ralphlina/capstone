@@ -62,7 +62,7 @@ class ViewController: UIViewController {
     
     @IBAction func logoutBtnTap(_ sender: Any) {
         
-        try! FIRAuth.auth()?.signOut();
+        try! FIRAuth.auth()!.signOut()
         
         self.displayMyAlertMessage(userMessage: "Signed out");
         self.entername.text = nil;
@@ -81,7 +81,7 @@ class ViewController: UIViewController {
         // Do any additional setup after loading the view, typically from a nib.
         backColor()
         
-        FIRApp.configure()
+        //FIRApp.configure()
 
     }
 
