@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Firebase
 
 class ViewController3: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate {
 
@@ -17,7 +18,41 @@ class ViewController3: UIViewController, UIPickerViewDataSource, UIPickerViewDel
     @IBOutlet weak var helloname: UILabel!
     @IBOutlet weak var pickerView: UIPickerView!
     
+    func displayMyAlertMessage(userMessage: String)
+    {
+        let myAlert = UIAlertController(title: "Alert", message: userMessage, preferredStyle: UIAlertControllerStyle.alert);
+        
+        let okAction = UIAlertAction(title: "Ok", style: UIAlertActionStyle.default, handler: nil);
+        
+        myAlert.addAction(okAction);
+        
+        self.present(myAlert, animated: true, completion: nil);
+    }
+    
     @IBAction func backBtnTap(_ sender: Any) {
+        try! FIRAuth.auth()!.signOut()
+        
+      //  FIRAuth.auth()?.addStateDidChangeListener { auth, user in
+       //     if user != nil {
+                // user is signed in so don't do anything
+         //   } else {
+                //the user has now signed out so go to login view controller
+                // and remove this listener
+        
+        //self.displayMyAlertMessage(userMessage: "Signed out");
+        
+        //UserDefaults.standard.setValue(nil, forKey: "uid")
+        
+       // let viewController:UIViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "Login") as UIViewController
+        // .instantiatViewControllerWithIdentifier() returns AnyObject! this must be downcast to utilize it
+        
+        //self.present(viewController, animated: false, completion: nil)
+                
+       //     }
+    //    }
+        
+//        let loginViewController = self.storyboard!.instantiateViewController(withIdentifier: "ViewController")
+//        UIApplication.shared.keyWindow?.rootViewController = loginViewController
         self.dismiss(animated: true, completion: nil)
     }
     
