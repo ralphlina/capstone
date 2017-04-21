@@ -11,6 +11,17 @@ import Firebase
 
 
 class ViewController: UIViewController {
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        // Do any additional setup after loading the view, typically from a nib.
+        
+        //let ref = FIRDatabase.database().reference(fromURL: "https:ci-hitchhike-b028e.firebaseio.com/")
+        backColor()
+        
+        //FIRApp.configure()
+        
+    }
 
     @IBOutlet weak var label: UILabel!
 
@@ -35,6 +46,9 @@ class ViewController: UIViewController {
     
     @IBAction func signinBtnTap(_ sender: Any) {
         
+//        let ref = FIRDatabase.database().reference().child("Users");
+//        let uid = FIRAuth.auth()?.currentUser?.uid;
+        
         let userEmail = entername.text;
         let userPassword = enterPW.text;
         
@@ -50,15 +64,98 @@ class ViewController: UIViewController {
                 //registration failure
                 self.displayMyAlertMessage(userMessage: "Error in email or password fields");
             }else{
-                //registration successful
-                //self.displayMyAlertMessage(userMessage: "Signed in as " + self.entername.text!);
-                self.performSegue(withIdentifier: "logintoView3", sender: self)
-                self.entername.text = nil;
-                self.enterPW.text = nil;
+                
+                let uid = FIRAuth.auth()?.currentUser?.uid
+                
+                let ref = FIRDatabase.database().reference(fromURL: "https://ci-hitchhike-b028e.firebaseio.com/")
+                
+                ref.child("Users").child(uid!).observeSingleEvent(of: FIRDataEventType.value, with: { (snapshot) in
+                    
+                    if let dict = snapshot.value as? [String: AnyObject]
+                    {
+                        let newDict = dict["Type"] as? String
+                            if newDict == "Driver"
+                            {
+                                try! FIRAuth.auth()!.signOut()
+                                //print(newDict)
+                                self.displayMyAlertMessage(userMessage: "You're account type is a driver.\nLogging out.")
+                            }
+                        else
+                            {
+                                //print(newDict)
+                                //self.displayMyAlertMessage(userMessage: "Success!!!")
+                                self.performSegue(withIdentifier: "logintoView3", sender: self)
+                        }
+                      //self.displayMyAlertMessage(userMessage: "We got something!")
+                    }
+                    
+                }
+                    , withCancel: nil)
+                
+                //    self.performSegue(withIdentifier: "logintoView3", sender: self)
+                    self.entername.text = nil;
+                    self.enterPW.text = nil;
+                
+//                    self.displayMyAlertMessage(userMessage: "What is goin on?" );
             }
         })
         
     }
+    
+    @IBAction func loginDriverBtnTap(_ sender: Any) {
+        
+        let userEmail = entername.text;
+        let userPassword = enterPW.text;
+        
+        if((userEmail?.isEmpty)! || (userPassword?.isEmpty)!)
+        {
+            //Display alert message.
+            self.displayMyAlertMessage(userMessage: "All fields are required");
+            return;
+        }
+        
+        FIRAuth.auth()?.signIn(withEmail: userEmail!, password: userPassword!, completion: { (user: FIRUser?, error) in
+            if error != nil {
+                //registration failure
+                self.displayMyAlertMessage(userMessage: "Error in email or password fields");
+            }else{
+                
+                let uid = FIRAuth.auth()?.currentUser?.uid
+                
+                let ref = FIRDatabase.database().reference(fromURL: "https://ci-hitchhike-b028e.firebaseio.com/")
+                
+                ref.child("Users").child(uid!).observeSingleEvent(of: FIRDataEventType.value, with: { (snapshot) in
+                    
+                    if let dict = snapshot.value as? [String: AnyObject]
+                    {
+                        let newDict = dict["Type"] as? String
+                        if newDict == "Passenger"
+                        {
+                            try! FIRAuth.auth()!.signOut()
+                            //print(newDict)
+                            self.displayMyAlertMessage(userMessage: "You're account type is a passenger.\nLogging out.")
+                        }
+                        else
+                        {
+                            //print(newDict)
+                            self.displayMyAlertMessage(userMessage: "Signed in as Driver!")
+                            //self.performSegue(withIdentifier: "logintoView3", sender: self)
+                        }
+                        //self.displayMyAlertMessage(userMessage: "We got something!")
+                    }
+                    
+                }
+                    , withCancel: nil)
+                
+                //    self.performSegue(withIdentifier: "logintoView3", sender: self)
+                self.entername.text = nil;
+                self.enterPW.text = nil;
+                
+                //                    self.displayMyAlertMessage(userMessage: "What is goin on?" );
+            }
+        })
+    }
+    
     
     @IBAction func logoutBtnTap(_ sender: Any) {
         
@@ -75,15 +172,6 @@ class ViewController: UIViewController {
         self.view.backgroundColor = UIColor(red: (255/255)*2, green: (247/255)*2, blue: (227/255)*2, alpha: 0.5)
     }
     
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
-        backColor()
-        
-        //FIRApp.configure()
-
-    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

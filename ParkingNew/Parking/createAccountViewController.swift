@@ -36,7 +36,7 @@ class createAccountViewController: UIViewController {
         
         
         //FIRApp.configure()
-        ref = FIRDatabase.database().reference()
+        //ref = FIRDatabase.database().reference()
         
         //configureDatabase()
         // Do any additional setup after loading the view.
@@ -101,17 +101,43 @@ class createAccountViewController: UIViewController {
         self.displayMyAlertMessage(userMessage:"User is not registered in, try again");
     }else{
         //registration successful
-        self.ref.child("Users").childByAutoId().setValue(["username": username, "Email": email, "Type": self.userTypeVar, "Password": password]);
+        //self.ref.child("Users").childByAutoId().setValue(["username": username, "Email": email, "Type": self.userTypeVar, "Password": password]);
         
-        let createAcctAlert = UIAlertController(title: "New User:", message: "New User Created!", preferredStyle: UIAlertControllerStyle.alert);
+        let createAcctAlert = UIAlertController(title: "New User", message: "Account Created!", preferredStyle: UIAlertControllerStyle.alert);
+        
+        guard let uid = user?.uid else{
+            return
+        }
+        
+        let ref = FIRDatabase.database().reference(fromURL: "https://ci-hitchhike-b028e.firebaseio.com/").child("Users").child(uid)
+        
+        let values = ["username": username, "Email": email, "Password": password, "Type": self.userTypeVar]
+        
+        ref.updateChildValues(values, withCompletionBlock: { (err,ref) in
+            
+            if err != nil{
+                self.displayMyAlertMessage(userMessage: "Something went wrong.\nTry again.")
+                return
+            }
+            else{
+                //self.displayMyAlertMessage(userMessage: "New user created successfully!")
+                createAcctAlert.addAction(UIAlertAction(title:"OK", style: UIAlertActionStyle.default, handler: {action in self.performSegue(withIdentifier: "createAccounttoView3", sender: self)}));
+                
+                self.present(createAcctAlert, animated: true, completion: nil)
+            }
+            })
         
         //alert.addAction(UIAlertAction(title:"OK", style: .Default, handler:  { action in self.performSegueWithIdentifier("mySegueIdentifier", sender: self) }
-        createAcctAlert.addAction(UIAlertAction(title:"OK", style: UIAlertActionStyle.default, handler: {action in self.performSegue(withIdentifier: "createAccounttoView3", sender: self)}));
+        //createAcctAlert.addAction(UIAlertAction(title:"OK", style: UIAlertActionStyle.default, handler: {action in self.performSegue(withIdentifier: "createAccounttoView3", sender: self)}));
         
-        self.present(createAcctAlert, animated: true, completion: nil)
+        //self.present(createAcctAlert, animated: true, completion: nil)
         //self.performSegue(withIdentifier: "createAccounttoView3", sender: self);
         
         //self.displayMyAlertMessage(userMessage:"New User is now registered!\nYou can now log in.");
+        
+        self.username.text = nil;
+        self.userEmail.text = nil;
+        self.userPassword.text = nil;
     }
     })
    //*/
