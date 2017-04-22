@@ -138,8 +138,8 @@ class ViewController: UIViewController {
                         else
                         {
                             //print(newDict)
-                            self.displayMyAlertMessage(userMessage: "Signed in as Driver!")
-                            //self.performSegue(withIdentifier: "logintoView3", sender: self)
+                            //self.displayMyAlertMessage(userMessage: "Signed in as Driver!")
+                            self.performSegue(withIdentifier: "loginToDriverView", sender: self)
                         }
                         //self.displayMyAlertMessage(userMessage: "We got something!")
                     }

@@ -11,7 +11,7 @@ import UIKit
 import MapKit
 import CoreLocation
 
-class View2 : UIViewController, CLLocationManagerDelegate {
+class mapViewController : UIViewController, CLLocationManagerDelegate {
     
     @IBOutlet weak var address: UILabel!
     
@@ -39,11 +39,6 @@ class View2 : UIViewController, CLLocationManagerDelegate {
        
         
     }
-    
-
-    @IBOutlet weak var helloname: UILabel!
-    
-    
     
     
     func backColor() {
