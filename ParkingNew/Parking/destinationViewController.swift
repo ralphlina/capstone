@@ -9,7 +9,7 @@
 import UIKit
 import Firebase
 
-class View4going: UIViewController {
+class destinationViewController: UIViewController {
 
     
     @IBOutlet weak var pickerView: UIPickerView!

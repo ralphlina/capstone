@@ -9,7 +9,7 @@
 import UIKit
 import Firebase
 
-class ViewController3: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate {
+class pickUpViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate {
 
     var labelText = String()
     
@@ -95,7 +95,7 @@ class ViewController3: UIViewController, UIPickerViewDataSource, UIPickerViewDel
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
-        let DestViewController : View4going = segue.destination as! View4going
+        let DestViewController : destinationViewController = segue.destination as! destinationViewController
         
         DestViewController.segLabel = label1.text!
         //DestViewController.labelText = entername.text!

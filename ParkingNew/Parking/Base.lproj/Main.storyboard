@@ -87,6 +87,7 @@
                                 <state key="normal" title="Log in - Driver"/>
                                 <connections>
                                     <action selector="loginDriverBtnTap:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Cg9-9n-S5v"/>
+                                    <segue destination="L28-2W-gUF" kind="showDetail" identifier="loginToDriverView" id="lZ6-Kb-52k"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CML-jy-oyf">
@@ -229,10 +230,10 @@
             </objects>
             <point key="canvasLocation" x="2682" y="665"/>
         </scene>
-        <!--Message Controller-->
+        <!--Driver View Controller-->
         <scene sceneID="OpT-Z4-fP4">
             <objects>
-                <viewController id="L28-2W-gUF" customClass="messageController" customModule="Parking" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="L28-2W-gUF" customClass="driverViewController" customModule="Parking" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="2Jd-cT-fQv"/>
                         <viewControllerLayoutGuide type="bottom" id="t4b-jS-H1N"/>
@@ -245,18 +246,31 @@
                                 <rect key="frame" x="0.0" y="-33" width="375" height="700"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
+                            <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8c4-Kc-zfb">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                <items>
+                                    <navigationItem title="Driver Page" id="TUY-Vu-30n">
+                                        <barButtonItem key="leftBarButtonItem" title="Back" id="jhc-VT-W5i">
+                                            <connections>
+                                                <action selector="backBtnTap:" destination="L28-2W-gUF" id="gN5-xP-x6V"/>
+                                            </connections>
+                                        </barButtonItem>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="UQg-0o-1aN" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3556" y="656"/>
+            <point key="canvasLocation" x="3449" y="-872"/>
         </scene>
-        <!--View2-->
+        <!--Map View Controller-->
         <scene sceneID="Fb6-hU-HLJ">
             <objects>
-                <viewController id="xF7-8d-sSR" customClass="View2" customModule="Parking" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="xF7-8d-sSR" customClass="mapViewController" customModule="Parking" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Zge-3f-QuN"/>
                         <viewControllerLayoutGuide type="bottom" id="nda-B8-2Q7"/>
@@ -312,12 +326,12 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="t0V-5V-aeZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5330" y="-100"/>
+            <point key="canvasLocation" x="5417" y="-100"/>
         </scene>
-        <!--View Controller3-->
+        <!--Pick Up View Controller-->
         <scene sceneID="T8F-od-ej6">
             <objects>
-                <viewController id="sgZ-h5-QO2" customClass="ViewController3" customModule="Parking" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="sgZ-h5-QO2" customClass="pickUpViewController" customModule="Parking" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="4om-bh-Yrv"/>
                         <viewControllerLayoutGuide type="bottom" id="Sga-Xe-ZjQ"/>
@@ -398,12 +412,12 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KQ5-7J-Qge" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3450" y="-100"/>
+            <point key="canvasLocation" x="3610" y="-100"/>
         </scene>
-        <!--View 4going-->
+        <!--Destination View Controller-->
         <scene sceneID="zTd-Bk-0f7">
             <objects>
-                <viewController id="wcv-K3-ZqT" customClass="View4going" customModule="Parking" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="wcv-K3-ZqT" customClass="destinationViewController" customModule="Parking" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="6Yh-4Z-uL7"/>
                         <viewControllerLayoutGuide type="bottom" id="Ufa-U8-41w"/>
@@ -495,7 +509,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6r0-8v-jGa" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4380" y="-100"/>
+            <point key="canvasLocation" x="4455" y="-100"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="SLN-Zf-mfj">
