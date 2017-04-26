@@ -109,24 +109,44 @@ class createAccountViewController: UIViewController {
             return
         }
         
-        let ref = FIRDatabase.database().reference(fromURL: "https://ci-hitchhike-b028e.firebaseio.com/").child("Users").child(uid)
+        //let ref = FIRDatabase.database().reference(fromURL: "https://ci-hitchhike-b028e.firebaseio.com/").child("Users").child(uid)
+        let ref = FIRDatabase.database().reference(fromURL: "https://ci-hitchhike-b028e.firebaseio.com/")
         
-        let values = ["username": username, "Email": email, "Password": password, "Type": self.userTypeVar]
-        
-        ref.updateChildValues(values, withCompletionBlock: { (err,ref) in
+        //let values = ["username": username, "Email": email, "Password": password, "Type": self.userTypeVar]
+        if self.userTypeVar == "Passenger"
+        {
+            let values = ["username": username, "Email": email, "Password": password, "RideCount": "0"]
+            ref.child("Users").child(uid).updateChildValues(values, withCompletionBlock: { (err,ref) in
             
-            if err != nil{
-                self.displayMyAlertMessage(userMessage: "Something went wrong.\nTry again.")
-                return
-            }
-            else{
-                //self.displayMyAlertMessage(userMessage: "New user created successfully!")
-                createAcctAlert.addAction(UIAlertAction(title:"OK", style: UIAlertActionStyle.default, handler: {action in self.performSegue(withIdentifier: "createAccounttoView3", sender: self)}));
+                if err != nil{
+                    self.displayMyAlertMessage(userMessage: "Something went wrong.\nTry again.")
+                    return
+                }
+                else{
+                    //self.displayMyAlertMessage(userMessage: "New user created successfully!")
+                    createAcctAlert.addAction(UIAlertAction(title:"OK", style: UIAlertActionStyle.default, handler: {action in self.performSegue(withIdentifier: "createAccounttoView3", sender: self)}));
                 
-                self.present(createAcctAlert, animated: true, completion: nil)
-            }
+                    self.present(createAcctAlert, animated: true, completion: nil)
+                }
+                })
+        }
+        else
+        {
+            let values = ["username": username, "Email": email, "Password": password, "DriveCount": "0"]
+            ref.child("Drivers").child(uid).updateChildValues(values, withCompletionBlock: { (err,ref) in
+                
+                if err != nil{
+                    self.displayMyAlertMessage(userMessage: "Something went wrong.\nTry again.")
+                    return
+                }
+                else{
+                    //self.displayMyAlertMessage(userMessage: "New user created successfully!")
+                    createAcctAlert.addAction(UIAlertAction(title:"OK", style: UIAlertActionStyle.default, handler: {action in self.performSegue(withIdentifier: "createAccounttoView3", sender: self)}));
+                    
+                    self.present(createAcctAlert, animated: true, completion: nil)
+                }
             })
-        
+        }
         //alert.addAction(UIAlertAction(title:"OK", style: .Default, handler:  { action in self.performSegueWithIdentifier("mySegueIdentifier", sender: self) }
         //createAcctAlert.addAction(UIAlertAction(title:"OK", style: UIAlertActionStyle.default, handler: {action in self.performSegue(withIdentifier: "createAccounttoView3", sender: self)}));
         

@@ -73,8 +73,8 @@ class ViewController: UIViewController {
                     
                     if let dict = snapshot.value as? [String: AnyObject]
                     {
-                        let newDict = dict["Type"] as? String
-                            if newDict == "Driver"
+                        let newDict = dict["Email"] as? String
+                            if newDict == userEmail
                             {
                                 try! FIRAuth.auth()!.signOut()
                                 //print(newDict)
@@ -124,12 +124,12 @@ class ViewController: UIViewController {
                 
                 let ref = FIRDatabase.database().reference(fromURL: "https://ci-hitchhike-b028e.firebaseio.com/")
                 
-                ref.child("Users").child(uid!).observeSingleEvent(of: FIRDataEventType.value, with: { (snapshot) in
+                ref.child("Drivers").child(uid!).observeSingleEvent(of: FIRDataEventType.value, with: { (snapshot) in
                     
                     if let dict = snapshot.value as? [String: AnyObject]
                     {
-                        let newDict = dict["Type"] as? String
-                        if newDict == "Passenger"
+                        let newDict = dict["Email"] as? String
+                        if newDict == userEmail
                         {
                             try! FIRAuth.auth()!.signOut()
                             //print(newDict)
