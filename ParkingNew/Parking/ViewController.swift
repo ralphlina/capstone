@@ -76,17 +76,23 @@ class ViewController: UIViewController {
                         let newDict = dict["Email"] as? String
                             if newDict == userEmail
                             {
-                                try! FIRAuth.auth()!.signOut()
-                                //print(newDict)
-                                self.displayMyAlertMessage(userMessage: "You're account type is a driver.\nLogging out.")
-                            }
-                        else
-                            {
                                 //print(newDict)
                                 //self.displayMyAlertMessage(userMessage: "Success!!!")
                                 self.performSegue(withIdentifier: "logintoView3", sender: self)
+                            }
+                        else
+                            {
+                                try! FIRAuth.auth()!.signOut()
+                                //print(newDict)
+                                self.displayMyAlertMessage(userMessage: "You're account type is a driver.\nLogging out.")
                         }
                       //self.displayMyAlertMessage(userMessage: "We got something!")
+                    }
+                    else
+                    {
+                        try! FIRAuth.auth()!.signOut()
+                        //print(newDict)
+                        self.displayMyAlertMessage(userMessage: "You're account type is a driver.\nLogging out.")
                     }
                     
                 }
@@ -131,17 +137,22 @@ class ViewController: UIViewController {
                         let newDict = dict["Email"] as? String
                         if newDict == userEmail
                         {
+                            //print(newDict)
+                            //self.displayMyAlertMessage(userMessage: "Signed in as Driver!")
+                            self.performSegue(withIdentifier: "loginToDriverView", sender: self)                        }
+                        else
+                        {
                             try! FIRAuth.auth()!.signOut()
                             //print(newDict)
                             self.displayMyAlertMessage(userMessage: "You're account type is a passenger.\nLogging out.")
                         }
-                        else
-                        {
-                            //print(newDict)
-                            //self.displayMyAlertMessage(userMessage: "Signed in as Driver!")
-                            self.performSegue(withIdentifier: "loginToDriverView", sender: self)
-                        }
                         //self.displayMyAlertMessage(userMessage: "We got something!")
+                    }
+                    else
+                    {
+                        try! FIRAuth.auth()!.signOut()
+                        //print(newDict)
+                        self.displayMyAlertMessage(userMessage: "You're account type is a passenger.\nLogging out!")
                     }
                     
                 }

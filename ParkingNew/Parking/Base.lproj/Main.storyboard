@@ -87,7 +87,6 @@
                                 <state key="normal" title="Log in - Driver"/>
                                 <connections>
                                     <action selector="loginDriverBtnTap:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Cg9-9n-S5v"/>
-                                    <segue destination="L28-2W-gUF" kind="showDetail" identifier="loginToDriverView" id="lZ6-Kb-52k"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CML-jy-oyf">
@@ -109,6 +108,7 @@
                         <outlet property="entername" destination="eWr-cx-Kus" id="ICc-s0-Xm8"/>
                         <outlet property="name" destination="vZZ-tu-8Bb" id="lcz-BB-AeO"/>
                         <segue destination="sgZ-h5-QO2" kind="showDetail" identifier="logintoView3" id="C7H-ZP-lFE"/>
+                        <segue destination="L28-2W-gUF" kind="showDetail" identifier="loginToDriverView" id="CfE-AM-6aB"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
