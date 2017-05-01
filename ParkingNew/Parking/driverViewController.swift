@@ -7,17 +7,42 @@
 //
 
 import UIKit
+import Firebase
 
-class driverViewController: UIViewController {
+class driverViewController: UIViewController, SendDataToDriverDelegate {
     
+    
+    
+    func displayMyAlertMessage(userMessage: String)
+    {
+        let myAlert = UIAlertController(title: "Alert", message: userMessage, preferredStyle: UIAlertControllerStyle.alert);
+        
+        let okAction = UIAlertAction(title: "Ok", style: UIAlertActionStyle.default, handler: nil);
+        
+        myAlert.addAction(okAction);
+        
+        self.present(myAlert, animated: true, completion: nil);
+    }
+
     
     @IBAction func backBtnTap(_ sender: Any) {
         self.dismiss(animated: true, completion: nil)
     }
     
+    let destinationVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "destinationVC") as! destinationViewController
+    
+    func passengerDataSent(data : String)
+    {
+        //print("\n", data, "\n")
+        self.displayMyAlertMessage(userMessage: "Hello World!")
+    }
+    
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        destinationVC.delegate = self
 
         // Do any additional setup after loading the view.
     }

@@ -10,12 +10,25 @@ import UIKit
 import Firebase
 
 class destinationViewController: UIViewController {
-
+    
+     var delegate: SendDataToDriverDelegate?
     
     @IBOutlet weak var pickerView: UIPickerView!
     
     @IBOutlet weak var label1: UILabel!
     @IBOutlet weak var startLabel: UILabel!
+    
+    func displayMyAlertMessage(userMessage: String)
+    {
+        let myAlert = UIAlertController(title: "Alert", message: userMessage, preferredStyle: UIAlertControllerStyle.alert);
+        
+        let okAction = UIAlertAction(title: "Ok", style: UIAlertActionStyle.default, handler: nil);
+        
+        myAlert.addAction(okAction);
+        
+        self.present(myAlert, animated: true, completion: nil);
+    }
+    
     
     @IBAction func backBtnTap(_ sender: Any) {
         self.dismiss(animated: true, completion: nil)
@@ -69,6 +82,75 @@ class destinationViewController: UIViewController {
         label1.text = locations1[row]
     }
     
+    @IBAction func requestBtnTap(_ sender: Any) {
+        
+        let ref = FIRDatabase.database().reference(fromURL: "https://ci-hitchhike-b028e.firebaseio.com/")
+        let uid = FIRAuth.auth()?.currentUser?.uid
+        
+        let userRideData = ref.child("UserRides").child(uid!).childByAutoId()
+        
+        let currentDate: NSNumber = NSNumber(value:NSDate().timeIntervalSince1970)
+        
+        let values = ["Location": startLabel.text, "Destination": label1.text, "Date": currentDate] as [String : Any]
+        
+        userRideData.updateChildValues(values, withCompletionBlock: { (err,ref) in
+            
+            if err != nil{
+                self.displayMyAlertMessage(userMessage: "Something went wrong.\nDidn't load values in database.")
+                return
+            }
+            else{
+                    self.delegate?.passengerDataSent(data: "Hello World")
+                
+                    let requestAlert = UIAlertController(title: "Ride Requested!", message: "Drivers Available: ", preferredStyle: UIAlertControllerStyle.alert);
+                
+                    requestAlert.addAction(UIAlertAction(title:"OK", style: UIAlertActionStyle.default, handler: {action in self.performSegue(withIdentifier: "destinationToMapSegue", sender: self)}));
+                
+                self.present(requestAlert, animated: true, completion: nil)
+            }
+        })
+        
+//        ref.child("Rides").child(uid!).observeSingleEvent(of: FIRDataEventType.value, with: { (snapshot) in
+//            print(snapshot)
+//            let dict = snapshot.value as? [String: AnyObject]
+//            var rNum = dict?["RideNumber"] as? Int
+//            
+//            if rNum! < 1
+//            {
+//                ref.child("Rides").child(uid!).child("RideNumber").setValue(1)
+//                //rNum = rNum! + 1
+//            }
+//            else{
+//                //rNum = 2
+//                //if rNum! > 1
+//                //{
+//                    rNum = rNum! + 1
+//                ref.child("Rides").child(uid!).child("RideNumber").setValue(rNum)
+//                //}
+//            }
+//            
+//        }
+//            , withCancel: nil)
+        
+        ref.child("Users").child(uid!).observeSingleEvent(of: FIRDataEventType.value, with: { (snapshot) in
+            
+            if let dict = snapshot.value as? [String: AnyObject]
+            {
+                let newDict = dict["RideCount"] as? NSNumber
+                var rideCount = newDict?.intValue
+                if rideCount == nil
+                {
+                    rideCount = 1
+                }
+                else
+                {
+                    rideCount = rideCount! + 1
+                }
+                ref.child("Users").child(uid!).child("RideCount").setValue(rideCount)
+            }
+        }
+            , withCancel: nil)
+    }
     
     var segLabel = String()
     
@@ -95,4 +177,8 @@ class destinationViewController: UIViewController {
     }
     */
 
+}
+
+protocol SendDataToDriverDelegate {
+    func passengerDataSent(data: String)
 }

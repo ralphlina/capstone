@@ -233,7 +233,7 @@
         <!--Driver View Controller-->
         <scene sceneID="OpT-Z4-fP4">
             <objects>
-                <viewController id="L28-2W-gUF" customClass="driverViewController" customModule="Parking" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="driverVC" id="L28-2W-gUF" customClass="driverViewController" customModule="Parking" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="2Jd-cT-fQv"/>
                         <viewControllerLayoutGuide type="bottom" id="t4b-jS-H1N"/>
@@ -331,7 +331,7 @@
         <!--Pick Up View Controller-->
         <scene sceneID="T8F-od-ej6">
             <objects>
-                <viewController id="sgZ-h5-QO2" customClass="pickUpViewController" customModule="Parking" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="pickUpVC" id="sgZ-h5-QO2" customClass="pickUpViewController" customModule="Parking" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="4om-bh-Yrv"/>
                         <viewControllerLayoutGuide type="bottom" id="Sga-Xe-ZjQ"/>
@@ -392,11 +392,7 @@
                                 <items>
                                     <navigationItem title="Current Location" id="vYY-4R-1IR">
                                         <barButtonItem key="backBarButtonItem" title="Back" id="d5x-gp-HMz"/>
-                                        <barButtonItem key="leftBarButtonItem" title="Sign Out" id="oYn-Wo-nWb">
-                                            <connections>
-                                                <action selector="backBtnTap:" destination="sgZ-h5-QO2" id="RKL-Qc-ket"/>
-                                            </connections>
-                                        </barButtonItem>
+                                        <barButtonItem key="leftBarButtonItem" title="Sign Out" id="oYn-Wo-nWb"/>
                                     </navigationItem>
                                 </items>
                             </navigationBar>
@@ -417,7 +413,7 @@
         <!--Destination View Controller-->
         <scene sceneID="zTd-Bk-0f7">
             <objects>
-                <viewController id="wcv-K3-ZqT" customClass="destinationViewController" customModule="Parking" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="destinationVC" id="wcv-K3-ZqT" customClass="destinationViewController" customModule="Parking" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="6Yh-4Z-uL7"/>
                         <viewControllerLayoutGuide type="bottom" id="Ufa-U8-41w"/>
@@ -461,7 +457,7 @@
                                     <color key="titleShadowColor" red="0.43529411759999997" green="0.4431372549" blue="0.47450980390000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <connections>
-                                    <segue destination="xF7-8d-sSR" kind="show" id="SB2-wu-jTB"/>
+                                    <action selector="requestBtnTap:" destination="wcv-K3-ZqT" eventType="touchUpInside" id="ADQ-r7-VGX"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Oyv-Yl-ZV1">
@@ -505,6 +501,7 @@
                         <outlet property="label1" destination="sA0-5e-FhN" id="3nk-0T-dzu"/>
                         <outlet property="pickerView" destination="8sD-W9-g2v" id="lp6-Nv-9dh"/>
                         <outlet property="startLabel" destination="Oyv-Yl-ZV1" id="zY5-CM-2mi"/>
+                        <segue destination="xF7-8d-sSR" kind="showDetail" identifier="destinationToMapSegue" id="q9H-X1-Msl"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6r0-8v-jGa" userLabel="First Responder" sceneMemberID="firstResponder"/>
