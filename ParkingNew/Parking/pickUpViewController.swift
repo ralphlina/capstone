@@ -29,7 +29,7 @@ class pickUpViewController: UIViewController, UIPickerViewDataSource, UIPickerVi
         self.present(myAlert, animated: true, completion: nil);
     }
     
-    @IBAction func backBtnTap(_ sender: Any) {
+    @IBAction func signOutBtnTap(_ sender: Any) {
         try! FIRAuth.auth()!.signOut()
         
         self.dismiss(animated: true, completion: nil)

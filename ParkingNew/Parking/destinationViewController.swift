@@ -11,6 +11,15 @@ import Firebase
 
 class destinationViewController: UIViewController {
     
+    var segLabel = String()
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        //FIRApp.configure()
+        startLabel.text = segLabel
+        // Do any additional setup after loading the view.
+    }
+    
      var delegate: SendDataToDriverDelegate?
     
     @IBOutlet weak var pickerView: UIPickerView!
@@ -89,9 +98,17 @@ class destinationViewController: UIViewController {
         
         let userRideData = ref.child("UserRides").child(uid!).childByAutoId()
         
-        let currentDate: NSNumber = NSNumber(value:NSDate().timeIntervalSince1970)
+        //let currentDate: NSNumber = NSNumber(value:NSDate().timeIntervalSince1970)
         
-        let values = ["Location": startLabel.text, "Destination": label1.text, "Date": currentDate] as [String : Any]
+        //When you want to print out correct date.
+        //var interval = NSDate().timeIntervalSince1970
+        //let currentDate: NSDate = NSDate(timeIntervalSince1970: interval)
+        
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy/MM/dd, H:mm:ss"
+        let defaultTimeZoneStr = formatter.string(from: Date())
+        
+        let values = ["Location": startLabel.text, "Destination": label1.text, "Date": defaultTimeZoneStr] as [String : Any]
         
         userRideData.updateChildValues(values, withCompletionBlock: { (err,ref) in
             
@@ -150,15 +167,6 @@ class destinationViewController: UIViewController {
             }
         }
             , withCancel: nil)
-    }
-    
-    var segLabel = String()
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        //FIRApp.configure()
-        //startLabel.text = segLabel
-        // Do any additional setup after loading the view.
     }
 
     override func didReceiveMemoryWarning() {

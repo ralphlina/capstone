@@ -392,7 +392,11 @@
                                 <items>
                                     <navigationItem title="Current Location" id="vYY-4R-1IR">
                                         <barButtonItem key="backBarButtonItem" title="Back" id="d5x-gp-HMz"/>
-                                        <barButtonItem key="leftBarButtonItem" title="Sign Out" id="oYn-Wo-nWb"/>
+                                        <barButtonItem key="leftBarButtonItem" title="Sign Out" id="oYn-Wo-nWb">
+                                            <connections>
+                                                <action selector="signOutBtnTap:" destination="sgZ-h5-QO2" id="S3g-8d-kLb"/>
+                                            </connections>
+                                        </barButtonItem>
                                     </navigationItem>
                                 </items>
                             </navigationBar>
