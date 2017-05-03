@@ -9,8 +9,12 @@
 import UIKit
 import Firebase
 
-class driverViewController: UIViewController, SendDataToDriverDelegate {
+//SendDataToDriverDelegate (<- add if trying to pass data with delegate
+class driverViewController: UIViewController{
     
+    @IBOutlet weak var rideStatusLabel: UILabel!
+    
+    var rideStatus = String()
     
     
     func displayMyAlertMessage(userMessage: String)
@@ -29,20 +33,50 @@ class driverViewController: UIViewController, SendDataToDriverDelegate {
         self.dismiss(animated: true, completion: nil)
     }
     
-    let destinationVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "destinationVC") as! destinationViewController
+   // let destinationVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "destinationVC") as! destinationViewController
     
-    func passengerDataSent(data : String)
-    {
-        //print("\n", data, "\n")
-        self.displayMyAlertMessage(userMessage: "Hello World!")
-    }
-    
+//    func passengerDataSent(data : String)
+//    {
+//        //print("\n", data, "\n")
+//        self.displayMyAlertMessage(userMessage: "Hello World!")
+//    }
     
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        destinationVC.delegate = self
+//        rideStatusLabel.text = "No current users need a ride."
+        
+        let ref = FIRDatabase.database().reference(fromURL: "https://ci-hitchhike-b028e.firebaseio.com/")
+        
+//        FIRAuth.auth()?.currentUser?.uid.substring(to: (FIRAuth.auth()?.currentUser?.uid.endIndex)!)
+        
+        ref.child("messages").observe(FIRDataEventType.value, with: { (snapshot1) in
+            
+            let dict = snapshot1.value as? [String: AnyObject]
+            let userIDMess = dict?["UserID"] as? String
+         
+            ref.child("UserRides").child(userIDMess!).observe(FIRDataEventType.value, with: { (snapshot2) in
+            
+//                if userID != userIDMess
+//                { 
+                    let userText = dict!["text"] as! String
+                    self.rideStatusLabel.text = "\(userText)"
+//                }
+//                else
+//                {
+                    //self.rideStatusLabel.text = dict?["text"] as? String
+//                }
+            
+            })
+            
+        })
+        
+        //for delegate
+        //destinationVC.delegate = self
+        
+        //for table view
+       // self.driverTableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
 
         // Do any additional setup after loading the view.
     }
