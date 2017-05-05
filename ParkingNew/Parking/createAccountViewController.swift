@@ -170,7 +170,7 @@ class createAccountViewController: UIViewController {
                     createDriverAlert.addAction(UIAlertAction(title:"Ok", style: UIAlertActionStyle.default, handler: {action in self.present(viewController, animated: true, completion: nil) }))
 //                    
 //                    self.present(createAcctAlert, animated: true, completion: nil)
-                    self.present(animated: true, completion: nil)
+                    self.present(createDriverAlert, animated: true, completion: nil)
                 }
             })
         }
