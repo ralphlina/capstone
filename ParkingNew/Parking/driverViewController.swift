@@ -58,15 +58,9 @@ class driverViewController: UIViewController{
          
             ref.child("UserRides").child(userIDMess!).observe(FIRDataEventType.value, with: { (snapshot2) in
             
-//                if userID != userIDMess
-//                { 
                     let userText = dict!["text"] as! String
                     self.rideStatusLabel.text = "\(userText)"
-//                }
-//                else
-//                {
-                    //self.rideStatusLabel.text = dict?["text"] as? String
-//                }
+
             
             })
             

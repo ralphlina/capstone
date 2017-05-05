@@ -266,6 +266,14 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9vH-b7-axo">
+                                <rect key="frame" x="16" y="302" width="343" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Go to Request List"/>
+                                <connections>
+                                    <segue destination="UjC-13-SHa" kind="showDetail" identifier="driverToList" id="kOh-gc-hHf"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
@@ -301,9 +309,6 @@
                             <outlet property="delegate" destination="UjC-13-SHa" id="Sfs-wV-Wng"/>
                         </connections>
                     </tableView>
-                    <connections>
-                        <outlet property="driverTableView" destination="BWk-oL-eo0" id="Kdz-yr-QIN"/>
-                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eUr-bh-m65" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

@@ -132,6 +132,16 @@ class destinationViewController: UIViewController {
             }
         })
         
+        ref.child("Users").child(uid!).observeSingleEvent(of: FIRDataEventType.value, with: { (snapshot) in
+         
+            if let dict = snapshot.value as? [String: AnyObject]
+            {
+                let newDict = dict["username"] as! String
+                userRideData.updateChildValues(["username": newDict])
+            }
+            
+        })
+        
 //        ref.child("Rides").child(uid!).observeSingleEvent(of: FIRDataEventType.value, with: { (snapshot) in
 //            print(snapshot)
 //            let dict = snapshot.value as? [String: AnyObject]
