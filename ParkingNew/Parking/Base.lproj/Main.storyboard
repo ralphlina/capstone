@@ -246,19 +246,6 @@
                                 <rect key="frame" x="0.0" y="-33" width="375" height="700"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
-                            <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8c4-Kc-zfb">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
-                                <items>
-                                    <navigationItem title="Driver Page" id="TUY-Vu-30n">
-                                        <barButtonItem key="leftBarButtonItem" title="Back" id="jhc-VT-W5i">
-                                            <connections>
-                                                <action selector="backBtnTap:" destination="L28-2W-gUF" id="gN5-xP-x6V"/>
-                                            </connections>
-                                        </barButtonItem>
-                                    </navigationItem>
-                                </items>
-                            </navigationBar>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LN0-ZO-cQb" customClass="driverLabel">
                                 <rect key="frame" x="0.0" y="94" width="375" height="104"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -274,6 +261,19 @@
                                     <segue destination="UjC-13-SHa" kind="showDetail" identifier="driverToList" id="kOh-gc-hHf"/>
                                 </connections>
                             </button>
+                            <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8c4-Kc-zfb">
+                                <rect key="frame" x="0.0" y="12" width="375" height="44"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                <items>
+                                    <navigationItem title="Driver Page" id="TUY-Vu-30n">
+                                        <barButtonItem key="leftBarButtonItem" title="Back" id="jhc-VT-W5i">
+                                            <connections>
+                                                <action selector="backBtnTap:" destination="L28-2W-gUF" id="gN5-xP-x6V"/>
+                                            </connections>
+                                        </barButtonItem>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
@@ -474,7 +474,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="fog" translatesAutoresizingMaskIntoConstraints="NO" id="V8N-TA-35G">
-                                <rect key="frame" x="-9" y="0.0" width="384" height="667"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                             <pickerView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8sD-W9-g2v">
@@ -557,7 +557,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6r0-8v-jGa" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4455" y="-100"/>
+            <point key="canvasLocation" x="4453.6000000000004" y="-100.29985007496252"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="SLN-Zf-mfj">
@@ -582,7 +582,7 @@
         <image name="fog" width="640" height="960"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="C7H-ZP-lFE"/>
+        <segue reference="i02-Zq-C79"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" red="0.0" green="0.17779476694685759" blue="1" alpha="1" colorSpace="calibratedRGB"/>
 </document>
