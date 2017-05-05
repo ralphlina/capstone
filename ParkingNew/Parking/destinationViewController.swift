@@ -98,7 +98,7 @@ class destinationViewController: UIViewController {
     @IBAction func requestBtnTap(_ sender: Any) {
 
         let ref2 = FIRDatabase.database().reference(fromURL: "https://ci-hitchhike-b028e.firebaseio.com/").child("messages")
-        let textMessageToDriver = ["text": " Location: \(startLabel.text!) and desired destination: \(label1.text!)", "UserID": FIRAuth.auth()?.currentUser?.uid.substring(to: (FIRAuth.auth()?.currentUser?.uid.endIndex)!)]
+        let textMessageToDriver = ["text": "Location: \(startLabel.text!) \nDesired destination: \(label1.text!)", "UserID": FIRAuth.auth()?.currentUser?.uid.substring(to: (FIRAuth.auth()?.currentUser?.uid.endIndex)!)]
         
         ref2.updateChildValues(textMessageToDriver)
         
