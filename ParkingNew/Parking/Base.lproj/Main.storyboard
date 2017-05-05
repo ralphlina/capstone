@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12118" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="4yZ-VM-TMY">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16C68" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="4yZ-VM-TMY">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12086"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -258,7 +258,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Go to Request List"/>
                                 <connections>
-                                    <segue destination="UjC-13-SHa" kind="showDetail" identifier="driverToList" id="kOh-gc-hHf"/>
+                                    <action selector="listBtnTap:" destination="L28-2W-gUF" eventType="touchUpInside" id="CUw-ft-cTB"/>
                                 </connections>
                             </button>
                             <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8c4-Kc-zfb">
@@ -280,39 +280,53 @@
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="rideStatusLabel" destination="LN0-ZO-cQb" id="5pE-JZ-5RG"/>
+                        <segue destination="ZCi-fa-sz7" kind="showDetail" identifier="driverToList" id="Dot-6k-Zvv"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="UQg-0o-1aN" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3448.8000000000002" y="-872.11394302848578"/>
         </scene>
-        <!--User Ride List Table View-->
-        <scene sceneID="LmM-xm-51V">
+        <!--Ride List-->
+        <scene sceneID="G6q-8l-beR">
             <objects>
-                <tableViewController id="UjC-13-SHa" customClass="userRideListTableView" customModule="Parking" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="BWk-oL-eo0">
+                <tableViewController storyboardIdentifier="userRideListTableView" title="Ride List" id="ZCi-fa-sz7" customClass="userRideListTableView" customModule="Parking" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="D1Q-cb-Ui7">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <navigationBar key="tableHeaderView" contentMode="scaleToFill" id="Adm-Uj-xjj">
+                            <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                            <items>
+                                <navigationItem title="List of Rides" id="hRT-5U-Kyk">
+                                    <barButtonItem key="leftBarButtonItem" title="Back" id="oSg-VT-XFN">
+                                        <connections>
+                                            <action selector="backBtnTap:" destination="ZCi-fa-sz7" id="y87-9h-uhl"/>
+                                        </connections>
+                                    </barButtonItem>
+                                </navigationItem>
+                            </items>
+                        </navigationBar>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="eJ8-Yo-aQP">
-                                <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="LabelCell" id="Byv-oq-Bn4">
+                                <rect key="frame" x="0.0" y="72" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="eJ8-Yo-aQP" id="Ty7-6C-tpd">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Byv-oq-Bn4" id="RFF-XI-HmE">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
                             </tableViewCell>
                         </prototypes>
                         <connections>
-                            <outlet property="dataSource" destination="UjC-13-SHa" id="wpc-AT-VFq"/>
-                            <outlet property="delegate" destination="UjC-13-SHa" id="Sfs-wV-Wng"/>
+                            <outlet property="dataSource" destination="ZCi-fa-sz7" id="9H3-J4-t4H"/>
+                            <outlet property="delegate" destination="ZCi-fa-sz7" id="OHi-Qi-v16"/>
                         </connections>
                     </tableView>
                 </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="eUr-bh-m65" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="rGe-mr-BPp" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4310" y="-872"/>
+            <point key="canvasLocation" x="4574" y="-872"/>
         </scene>
         <!--Map View Controller-->
         <scene sceneID="Fb6-hU-HLJ">

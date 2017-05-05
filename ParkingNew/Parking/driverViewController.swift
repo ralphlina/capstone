@@ -44,7 +44,9 @@ class driverViewController: UIViewController{
 
     //FIRDatabase.database().reference().child("users")
     
-    
+    @IBAction func listBtnTap(_ sender: Any) {
+        self.performSegue(withIdentifier: "driverToList", sender: self)
+    }
     
     
     override func viewDidLoad() {

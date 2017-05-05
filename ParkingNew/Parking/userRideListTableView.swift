@@ -13,14 +13,18 @@ import Firebase
 class userRideListTableView: UITableViewController{
     
     @IBOutlet var driverTableView: UITableView!
-    
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         
         //for table view
-        self.driverTableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
+        //self.driverTableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
     }
+
+    @IBAction func backBtnTap(_ sender: Any) {
+        self.dismiss(animated: true, completion: nil)
+    }
+    
     
     var sample: [String] = ["test", "went", "well"]
     
@@ -30,15 +34,17 @@ class userRideListTableView: UITableViewController{
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let cell:UITableViewCell = self.driverTableView.dequeueReusableCell(withIdentifier: "cell")! as UITableViewCell
+//        let cell:UITableViewCell = self.driverTableView.dequeueReusableCell(withIdentifier: "cell")! as UITableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "LabelCell", for: indexPath)
         
-        cell.textLabel?.text = "hi"
+        cell.textLabel?.text = sample[indexPath.row]
         
         return cell
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        self.displayMyAlertMessage(userMessage: "You selected cell #\(indexPath.row)!")
+        
+        self.displayMyAlertMessage(userMessage: "You selected cell \(indexPath.row)!")
         
     }
     
