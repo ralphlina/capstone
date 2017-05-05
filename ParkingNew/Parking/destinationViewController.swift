@@ -17,6 +17,8 @@ class destinationViewController: UIViewController {
         super.viewDidLoad()
         //FIRApp.configure()
         startLabel.text = segLabel
+        //requestBtnTap.addTarget(self, action: #selector(handleSend), forControlEvents: .touchUpInside)
+        
         // Do any additional setup after loading the view.
     }
     
@@ -30,6 +32,7 @@ class destinationViewController: UIViewController {
     func displayMyAlertMessage(userMessage: String)
     {
         let myAlert = UIAlertController(title: "Alert", message: userMessage, preferredStyle: UIAlertControllerStyle.alert);
+        
         
         let okAction = UIAlertAction(title: "Ok", style: UIAlertActionStyle.default, handler: nil);
         
@@ -93,11 +96,21 @@ class destinationViewController: UIViewController {
     
     @IBAction func requestBtnTap(_ sender: Any) {
         
+<<<<<<< HEAD
         let ref2 = FIRDatabase.database().reference(fromURL: "https://ci-hitchhike-b028e.firebaseio.com/").child("messages")
         let textMessageToDriver = ["text": "\(FIRAuth.auth()?.currentUser?.displayName) Location: \(startLabel.text!) and desired destination: \(label1.text!)", "UserID": FIRAuth.auth()?.currentUser?.uid.substring(to: (FIRAuth.auth()?.currentUser?.uid.endIndex)!)]
         
         ref2.updateChildValues(textMessageToDriver)
         
+=======
+        
+        let ref2 = FIRDatabase.database().reference().child("messages")
+        let textMessageToDriver = ["text": "Please pick me up at: \(startLabel.text!). and bring me to: \(label1.text!)"]
+        
+        ref2.updateChildValues(textMessageToDriver)
+        
+        
+>>>>>>> a8983ae81b88ba44b4865910a48ec33c90890b58
         let ref = FIRDatabase.database().reference(fromURL: "https://ci-hitchhike-b028e.firebaseio.com/")
         let uid = FIRAuth.auth()?.currentUser?.uid
         
@@ -184,6 +197,7 @@ class destinationViewController: UIViewController {
             , withCancel: nil)
     }
 
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -200,6 +214,12 @@ class destinationViewController: UIViewController {
     }
     */
 
+    
+    
+    
+    
+    
+    
 }
 
 protocol SendDataToDriverDelegate {
