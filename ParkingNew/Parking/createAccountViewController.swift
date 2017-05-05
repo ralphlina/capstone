@@ -88,6 +88,23 @@ class createAccountViewController: UIViewController {
     let email = userEmail.text;
     let password = userPassword.text;
     
+        
+    //let userEmail = entername.text;
+    //let userPassword2 = enterPW.text;
+        let password2 = String(password!)
+        //
+        // ENCRYPT PASSWORD TO MATCH
+        var encryptedPass = ""
+        for uni in password2!.unicodeScalars {
+            var val = uni.value
+            val += 1 // or whatever ...
+            //}
+            encryptedPass.append(Character(UnicodeScalar(val)!))
+        }
+        // encrypt done
+        //
+        
+        
     if((username?.isEmpty)! || (email?.isEmpty)! || (password?.isEmpty)!)
     {
     //Display alert message.
@@ -95,7 +112,7 @@ class createAccountViewController: UIViewController {
     return;
     }
     
-    FIRAuth.auth()?.createUser(withEmail: email!, password: password!, completion: { (user: FIRUser?, error) in
+    FIRAuth.auth()?.createUser(withEmail: email!, password: encryptedPass, completion: { (user: FIRUser?, error) in
     if error != nil {
         //registration failure
         self.displayMyAlertMessage(userMessage:"User is not registered in, try again");
@@ -115,7 +132,7 @@ class createAccountViewController: UIViewController {
         //let values = ["username": username, "Email": email, "Password": password, "Type": self.userTypeVar]
         if self.userTypeVar == "Passenger"
         {
-            let values = ["username": username, "Email": email, "Password": password, "RideCount": "0"]
+            let values = ["username": username, "Email": email, "Password": encryptedPass, "RideCount": "0"]
             ref.child("Users").child(uid).updateChildValues(values, withCompletionBlock: { (err,ref) in
             
                 if err != nil{
@@ -132,7 +149,7 @@ class createAccountViewController: UIViewController {
         }
         else
         {
-            let values = ["username": username, "Email": email, "Password": password, "DriveCount": "0"]
+            let values = ["username": username, "Email": email, "Password": encryptedPass, "DriveCount": "0"]
             ref.child("Drivers").child(uid).updateChildValues(values, withCompletionBlock: { (err,ref) in
                 
                 if err != nil{

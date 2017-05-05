@@ -48,18 +48,32 @@ class ViewController: UIViewController {
         
 //        let ref = FIRDatabase.database().reference().child("Users");
 //        let uid = FIRAuth.auth()?.currentUser?.uid;
-        
+      
         let userEmail = entername.text;
-        let userPassword = enterPW.text;
+        let userPassword2 = enterPW.text;
         
-        if((userEmail?.isEmpty)! || (userPassword?.isEmpty)!)
+        //
+        // ENCRYPT PASSWORD TO MATCH
+        var userPassword = ""
+        for uni in userPassword2!.unicodeScalars {
+            var val = uni.value
+            val += 1 // or whatever ...
+            //}
+            userPassword.append(Character(UnicodeScalar(val)!))
+        }
+        // encrypt done
+        //
+        
+        
+        
+        if((userEmail?.isEmpty)! || (userPassword2?.isEmpty)!)
         {
             //Display alert message.
             self.displayMyAlertMessage(userMessage: "All fields are required");
             return;
         }
         
-        FIRAuth.auth()?.signIn(withEmail: userEmail!, password: userPassword!, completion: { (user: FIRUser?, error) in
+        FIRAuth.auth()?.signIn(withEmail: userEmail!, password: userPassword, completion: { (user: FIRUser?, error) in
             if error != nil {
                 //registration failure
                 self.displayMyAlertMessage(userMessage: "Error in email or password fields");
@@ -111,16 +125,28 @@ class ViewController: UIViewController {
     @IBAction func loginDriverBtnTap(_ sender: Any) {
         
         let userEmail = entername.text;
-        let userPassword = enterPW.text;
+        let userPassword2 = enterPW.text;
         
-        if((userEmail?.isEmpty)! || (userPassword?.isEmpty)!)
+        //
+        // ENCRYPT PASSWORD TO MATCH
+        var userPassword = ""
+        for uni in userPassword2!.unicodeScalars {
+            var val = uni.value
+            val += 1 // or whatever ...
+            //}
+            userPassword.append(Character(UnicodeScalar(val)!))
+        }
+        // encrypt done
+        //
+        
+        if((userEmail?.isEmpty)! || (userPassword2?.isEmpty)!)
         {
             //Display alert message.
             self.displayMyAlertMessage(userMessage: "All fields are required");
             return;
         }
         
-        FIRAuth.auth()?.signIn(withEmail: userEmail!, password: userPassword!, completion: { (user: FIRUser?, error) in
+        FIRAuth.auth()?.signIn(withEmail: userEmail!, password: userPassword, completion: { (user: FIRUser?, error) in
             if error != nil {
                 //registration failure
                 self.displayMyAlertMessage(userMessage: "Error in email or password fields");
