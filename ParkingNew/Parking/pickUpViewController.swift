@@ -36,7 +36,7 @@ class pickUpViewController: UIViewController, UIPickerViewDataSource, UIPickerVi
         self.dismiss(animated: true, completion: nil)
     }
     
-    let locations1 = ["Library", "Student Union", "Gym", "A7", "A8", "A9", "A10", "El Dorado", "Aliso Hall", "Sierra Hall"]
+    let locations1 = ["Library", "Student Union", "Gym", "El Dorado", "Aliso Hall", "Sierra Hall", "Cafeteria", "Sage Hall", "North Bell Tower", "South Bell Tower", "A1", "A2", "A3", "A4", "A5", "A6", "A7", "A8", "A9", "A10", "SH1", "SH2", "SH3"]
 
     
     func numberOfComponents(in pickerView: UIPickerView) -> Int
