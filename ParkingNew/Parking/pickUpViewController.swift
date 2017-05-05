@@ -17,6 +17,7 @@ class pickUpViewController: UIViewController, UIPickerViewDataSource, UIPickerVi
 
     @IBOutlet weak var helloname: UILabel!
     @IBOutlet weak var pickerView: UIPickerView!
+
     
     func displayMyAlertMessage(userMessage: String)
     {
@@ -40,6 +41,7 @@ class pickUpViewController: UIViewController, UIPickerViewDataSource, UIPickerVi
     
     func numberOfComponents(in pickerView: UIPickerView) -> Int
     {
+        label1.text = "Library"
         return 1
     }
     

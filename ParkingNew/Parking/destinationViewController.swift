@@ -77,6 +77,7 @@ class destinationViewController: UIViewController {
     
     func numberOfComponentsInPickerView(_ pickerView: UIPickerView) -> Int
     {
+        label1.text = "Library"
         return 1
     }
     
@@ -95,22 +96,14 @@ class destinationViewController: UIViewController {
     }
     
     @IBAction func requestBtnTap(_ sender: Any) {
-        
-<<<<<<< HEAD
+
         let ref2 = FIRDatabase.database().reference(fromURL: "https://ci-hitchhike-b028e.firebaseio.com/").child("messages")
-        let textMessageToDriver = ["text": "\(FIRAuth.auth()?.currentUser?.displayName) Location: \(startLabel.text!) and desired destination: \(label1.text!)", "UserID": FIRAuth.auth()?.currentUser?.uid.substring(to: (FIRAuth.auth()?.currentUser?.uid.endIndex)!)]
-        
-        ref2.updateChildValues(textMessageToDriver)
-        
-=======
-        
-        let ref2 = FIRDatabase.database().reference().child("messages")
-        let textMessageToDriver = ["text": "Please pick me up at: \(startLabel.text!). and bring me to: \(label1.text!)"]
+        let textMessageToDriver = ["text": " Location: \(startLabel.text!) and desired destination: \(label1.text!)", "UserID": FIRAuth.auth()?.currentUser?.uid.substring(to: (FIRAuth.auth()?.currentUser?.uid.endIndex)!)]
         
         ref2.updateChildValues(textMessageToDriver)
         
         
->>>>>>> a8983ae81b88ba44b4865910a48ec33c90890b58
+        
         let ref = FIRDatabase.database().reference(fromURL: "https://ci-hitchhike-b028e.firebaseio.com/")
         let uid = FIRAuth.auth()?.currentUser?.uid
         
@@ -127,7 +120,10 @@ class destinationViewController: UIViewController {
         let defaultTimeZoneStr = formatter.string(from: Date())
         
         let values = ["Location": startLabel.text, "Destination": label1.text, "Date": defaultTimeZoneStr] as [String : Any]
-        
+        if (startLabel.text == label1.text)
+        {
+            self.displayMyAlertMessage(userMessage: "Location and Destination cannot be the same place.")
+        }
         userRideData.updateChildValues(values, withCompletionBlock: { (err,ref) in
             
             if err != nil{
