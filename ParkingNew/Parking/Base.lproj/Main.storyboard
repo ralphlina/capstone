@@ -223,7 +223,6 @@
                         <outlet property="userPassword" destination="D0W-W1-07H" id="GIc-Dj-mHi"/>
                         <outlet property="userType" destination="6Ll-Gx-PiU" id="9qx-AK-cnA"/>
                         <outlet property="username" destination="KFE-Zd-l4J" id="YYL-A1-Knb"/>
-                        <segue destination="sgZ-h5-QO2" kind="showDetail" identifier="createAccounttoView3" id="i02-Zq-C79"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dQR-MT-Ax3" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -595,8 +594,5 @@
     <resources>
         <image name="fog" width="640" height="960"/>
     </resources>
-    <inferredMetricsTieBreakers>
-        <segue reference="i02-Zq-C79"/>
-    </inferredMetricsTieBreakers>
     <color key="tintColor" red="0.0" green="0.17779476694685759" blue="1" alpha="1" colorSpace="calibratedRGB"/>
 </document>

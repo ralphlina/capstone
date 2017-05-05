@@ -140,9 +140,13 @@ class createAccountViewController: UIViewController {
                     return
                 }
                 else{
-                    //self.displayMyAlertMessage(userMessage: "New user created successfully!")
-                    createAcctAlert.addAction(UIAlertAction(title:"OK", style: UIAlertActionStyle.default, handler: {action in self.performSegue(withIdentifier: "createAccounttoView3", sender: self)}));
+                    //self.displayMyAlertMessage(userMessage: "New User created successfully!")
+//                    createAcctAlert.addAction(UIAlertAction(title:"OK", style: UIAlertActionStyle.default, handler: {action in self.performSegue(withIdentifier: "createAccounttoView3", sender: self)}));
                 
+                    let viewController:UIViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "Login")
+                    
+                    createAcctAlert.addAction(UIAlertAction(title:"Ok", style: UIAlertActionStyle.default, handler: {action in self.present(viewController, animated: true, completion: nil) }))
+                    
                     self.present(createAcctAlert, animated: true, completion: nil)
                 }
                 })
@@ -157,10 +161,16 @@ class createAccountViewController: UIViewController {
                     return
                 }
                 else{
-                    //self.displayMyAlertMessage(userMessage: "New user created successfully!")
-                    createAcctAlert.addAction(UIAlertAction(title:"OK", style: UIAlertActionStyle.default, handler: {action in self.performSegue(withIdentifier: "createAccounttoView3", sender: self)}));
+                    let createDriverAlert = UIAlertController(title: "New Driver", message: "Account Created!", preferredStyle: UIAlertControllerStyle.alert);
                     
-                    self.present(createAcctAlert, animated: true, completion: nil)
+//                    createAcctAlert.addAction(UIAlertAction(title:"OK", style: UIAlertActionStyle.default, handler: {action in self.performSegue(withIdentifier: "createAccounttoView3", sender: self)}));
+                    
+                    let viewController:UIViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "Login")
+                    
+                    createDriverAlert.addAction(UIAlertAction(title:"Ok", style: UIAlertActionStyle.default, handler: {action in self.present(viewController, animated: true, completion: nil) }))
+//                    
+//                    self.present(createAcctAlert, animated: true, completion: nil)
+                    self.present(animated: true, completion: nil)
                 }
             })
         }
