@@ -96,12 +96,6 @@ class destinationViewController: UIViewController {
     }
     
     @IBAction func requestBtnTap(_ sender: Any) {
-
-        let ref2 = FIRDatabase.database().reference(fromURL: "https://ci-hitchhike-b028e.firebaseio.com/").child("messages")
-        let textMessageToDriver = ["text": "Location: \(startLabel.text!) \nDesired destination: \(label1.text!)", "UserID": FIRAuth.auth()?.currentUser?.uid.substring(to: (FIRAuth.auth()?.currentUser?.uid.endIndex)!)]
-        
-        ref2.updateChildValues(textMessageToDriver)
-        
         
         
         let ref = FIRDatabase.database().reference(fromURL: "https://ci-hitchhike-b028e.firebaseio.com/")
@@ -119,7 +113,7 @@ class destinationViewController: UIViewController {
         formatter.dateFormat = "yyyy/MM/dd, H:mm:ss"
         let defaultTimeZoneStr = formatter.string(from: Date())
         
-        let values = ["Location": startLabel.text, "Destination": label1.text, "Date": defaultTimeZoneStr] as [String : Any]
+        let values = ["Location": startLabel.text!, "Destination": label1.text!, "Date": defaultTimeZoneStr] as [String : Any]
         if (startLabel.text == label1.text)
         {
             self.displayMyAlertMessage(userMessage: "Location and Destination cannot be the same place.")
@@ -150,28 +144,20 @@ class destinationViewController: UIViewController {
             }
             
         })
+
+        let ref2 = FIRDatabase.database().reference(fromURL: "https://ci-hitchhike-b028e.firebaseio.com/").child("messages")
         
-//        ref.child("Rides").child(uid!).observeSingleEvent(of: FIRDataEventType.value, with: { (snapshot) in
-//            print(snapshot)
-//            let dict = snapshot.value as? [String: AnyObject]
-//            var rNum = dict?["RideNumber"] as? Int
-//            
-//            if rNum! < 1
-//            {
-//                ref.child("Rides").child(uid!).child("RideNumber").setValue(1)
-//                //rNum = rNum! + 1
-//            }
-//            else{
-//                //rNum = 2
-//                //if rNum! > 1
-//                //{
-//                    rNum = rNum! + 1
-//                ref.child("Rides").child(uid!).child("RideNumber").setValue(rNum)
-//                //}
-//            }
-//            
-//        }
-//            , withCancel: nil)
+        userRideData.observeSingleEvent(of: FIRDataEventType.value, with: { snapshot in
+        
+            let rideID = snapshot.key 
+            
+//            ref2.updateChildValues(["rideID": rideID])
+             let textMessageToDriver = ["text": "Location: \(self.startLabel.text!) \nDesired destination: \(self.label1.text!)", "UserID": FIRAuth.auth()?.currentUser?.uid.substring(to: (FIRAuth.auth()?.currentUser?.uid.endIndex)!), "rideID": rideID]
+            
+            ref2.childByAutoId().updateChildValues(textMessageToDriver)
+            
+        })
+        
         
         ref.child("Users").child(uid!).observeSingleEvent(of: FIRDataEventType.value, with: { (snapshot) in
             

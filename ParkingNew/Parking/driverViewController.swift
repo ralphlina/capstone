@@ -58,7 +58,7 @@ class driverViewController: UIViewController{
         
 //        FIRAuth.auth()?.currentUser?.uid.substring(to: (FIRAuth.auth()?.currentUser?.uid.endIndex)!)
         
-        ref.child("messages").observe(FIRDataEventType.value, with: { (snapshot1) in
+        ref.child("messages").observe(FIRDataEventType.childAdded, with: { (snapshot1) in
             
             let dict = snapshot1.value as? [String: AnyObject]
             let userIDMess = dict?["UserID"] as? String
