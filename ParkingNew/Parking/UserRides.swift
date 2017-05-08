@@ -14,5 +14,5 @@ class UserRides: NSObject {
     var date: String?
     var location: String?
     var destination: String?
-
+    var driverId: String?
 }
