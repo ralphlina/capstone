@@ -127,7 +127,7 @@ class destinationViewController: UIViewController {
             else{
                     self.delegate?.passengerDataSent(data: "Hello World")
                 
-                    let requestAlert = UIAlertController(title: "Ride Requested!", message: "Drivers Available: ", preferredStyle: UIAlertControllerStyle.alert);
+                    let requestAlert = UIAlertController(title: "Ride Requested!", message: "Please wait for driver to accept", preferredStyle: UIAlertControllerStyle.alert);
                 
                     requestAlert.addAction(UIAlertAction(title:"OK", style: UIAlertActionStyle.default, handler: {action in self.performSegue(withIdentifier: "destinationToMapSegue", sender: self)}));
                 
